@@ -2,18 +2,25 @@ import UIKit
 
 final public class AnimatedTextView: UITextView {
 
-    public var textAttributes: [String: Any]? {
+    public var textAttributes: [NSAttributedStringKey: Any]? {
         didSet {
             guard let attributes = textAttributes else { return }
-            typingAttributes = attributes
+            let newDict = Dictionary(uniqueKeysWithValues:
+                attributes.map { key, value in (key.rawValue, value) })
+            
+            
+            typingAttributes = newDict
         }
     }
 
     public override var font: UIFont? {
         didSet {
             var attributes = typingAttributes
-            attributes[NSFontAttributeName] = font
-            textAttributes = attributes
+            attributes[NSAttributedStringKey.font.rawValue] = font
+            let newDict = Dictionary(uniqueKeysWithValues:
+                attributes.map { key, value in (NSAttributedStringKey(key), value) })
+            
+            textAttributes = newDict
         }
     }
 

@@ -15,7 +15,7 @@ public protocol AnimatedTextInputStyle {
     var bottomMargin: CGFloat { get }
     var yHintPositionOffset: CGFloat { get }
     var yPlaceholderPositionOffset: CGFloat { get }
-    var textAttributes: [String: Any]? { get }
+    var textAttributes: [NSAttributedStringKey: Any]? { get }
 }
 
 public struct AnimatedTextInputStyleBlue: AnimatedTextInputStyle {
@@ -35,7 +35,7 @@ public struct AnimatedTextInputStyleBlue: AnimatedTextInputStyle {
     public let yHintPositionOffset: CGFloat = 7
     public let yPlaceholderPositionOffset: CGFloat = 0
     //Text attributes will override properties like textInputFont, textInputFontColor...
-    public let textAttributes: [String: Any]? = nil
+    public let textAttributes: [NSAttributedStringKey: Any]? = nil
 
     public init() { }
 }
